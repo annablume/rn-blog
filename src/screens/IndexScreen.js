@@ -10,7 +10,6 @@ const { state, addBlogPost, deleteBlogPost } = useContext(Context);
 
     return (
         <View>
-            <Button title="Add Post"  onPress={addBlogPost} />
             <FlatList
                 data={state}
                 keyExtractor={blogPost => blogPost.title}
@@ -31,6 +30,16 @@ const { state, addBlogPost, deleteBlogPost } = useContext(Context);
             />
         </View>
     );
+};
+
+IndexScreen.navigationOptions = ({ navigation }) => {
+    return {
+        headerRight: () => (
+          <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+            <Feather name="plus" size={30} />
+          </TouchableOpacity>
+        )
+      };
 };
 
 const styles = StyleSheet.create({
